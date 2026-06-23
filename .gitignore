@@ -1,0 +1,17 @@
+# Crazy Arcade game resources must not be committed.
+*.idx
+*.idd
+*.ssd
+frame.png
+mypage_offsets.json
+
+# Exported previews and local scratch files.
+*.gif
+_*.png
+_*.bmp
+dist/
+node_modules/
+
+# OS/editor noise.
+Thumbs.db
+.DS_Store

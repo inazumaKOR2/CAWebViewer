@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crazy Arcade Avatar Viewer Web</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <button id="pickFolderButton" class="primary" data-i18n="button.openFolder">폴더 열기</button>
+    <button id="guideButton" data-i18n="button.guide">가이드</button>
+    <select id="languageSelect" class="languageSelect" aria-label="Language">
+      <option value="ko">KOR</option>
+      <option value="en">EN</option>
+    </select>
+    <input id="folderInput" type="file" webkitdirectory directory multiple hidden />
+    <span id="packageStatus" class="status" data-i18n="status.noFolder">폴더를 아직 열지 않았습니다</span>
+  </header>
+
+  <main class="shell">
+    <section class="panel library">
+      <div class="panelTitle" data-i18n="panel.library">목록</div>
+      <div class="tabs">
+        <button class="tab active" data-tab="Avatar">Avatar</button>
+        <button class="tab" data-tab="CharDeco">CharDeco</button>
+        <button class="tab" data-tab="Slot">Slot</button>
+        <button class="tab" data-tab="IDDeco">IDDeco</button>
+      </div>
+      <input id="searchBox" class="search" type="search" spellcheck="false" data-i18n-placeholder="placeholder.search" />
+      <div id="filterBar" class="filters"></div>
+      <div id="assetList" class="assetList"></div>
+      <div class="row">
+        <button id="wearButton" class="primary wide" data-i18n="wear.default">장착</button>
+      </div>
+    </section>
+
+    <section class="panel previewPanel">
+      <div class="previewHeader">
+        <div class="panelTitle" data-i18n="panel.preview">미리보기</div>
+        <div class="previewActions">
+          <button id="exportGifButton" data-i18n="button.exportGif">GIF 저장</button>
+          <button id="scaleButton">1x</button>
+        </div>
+      </div>
+      <div class="previewStage">
+        <canvas id="previewCanvas"></canvas>
+      </div>
+      <div id="previewStatus" class="previewStatus" data-i18n="status.ready">준비됨</div>
+    </section>
+
+    <section class="panel controls">
+      <div class="panelTitle" data-i18n="panel.controls">설정</div>
+      <div class="grid2">
+        <label><span data-i18n="label.character">캐릭터</span><select id="characterSelect"></select></label>
+        <label><span data-i18n="label.direction">방향</span><select id="directionSelect"></select></label>
+        <label><span data-i18n="label.action">동작</span><select id="actionSelect"></select></label>
+        <label><span data-i18n="label.mode">모드</span><select id="modeSelect"><option value="Frame">프레임</option><option value="NoFrame">노프레임</option></select></label>
+        <label><span data-i18n="label.delay">딜레이 ms</span><input id="delayInput" type="number" min="16" max="1000" value="166" /></label>
+      </div>
+      <label class="full"><span data-i18n="label.nickname">닉네임</span><input id="nicknameInput" type="text" spellcheck="false" /></label>
+
+      <div class="panelSubTitle" data-i18n="panel.levelSettings">레벨 설정</div>
+      <div class="grid2 levelSettings">
+        <label class="checkLabel"><input id="level1VisibleInput" type="checkbox" checked /><span data-i18n="label.level1Visible">레벨 1 표시</span></label>
+        <label class="checkLabel"><input id="level2VisibleInput" type="checkbox" checked /><span data-i18n="label.level2Visible">레벨 2 표시</span></label>
+        <label><span data-i18n="label.level1">레벨 1</span><input id="levelInput" type="number" min="1" value="1" /></label>
+        <label><span data-i18n="label.level2">레벨 2</span><input id="level2Input" type="number" min="1" value="1" /></label>
+        <label class="checkLabel"><input id="rotateEnabledInput" type="checkbox" checked /><span data-i18n="label.rotateEnabled">회전</span></label>
+        <label><span data-i18n="label.rotate">회전 횟수</span><input id="rotateInput" type="number" min="0" max="10" value="1" /></label>
+        <label class="checkLabel"><input id="twinkleInput" type="checkbox" checked /><span data-i18n="label.twinkle">트윙클</span></label>
+        <label><span data-i18n="label.twinkleSet">트윙클 종류</span><select id="twinkleSelect"></select></label>
+      </div>
+
+      <div class="panelSubTitle" data-i18n="panel.equipped">장착중</div>
+      <div id="equippedList" class="equippedList"></div>
+      <div class="row wrap">
+        <button id="removeButton" data-i18n="button.remove">선택 제거</button>
+        <button id="clearAvatarButton" data-i18n="button.clearAvatar">아바타 비우기</button>
+        <button id="clearCharButton" data-i18n="button.clearChar">캐릭데코 비우기</button>
+        <button id="clearSlotButton" data-i18n="button.clearSlot">슬롯 비우기</button>
+        <button id="clearIdButton" data-i18n="button.clearId">IDDeco 비우기</button>
+      </div>
+
+      <div class="panelSubTitle" data-i18n="panel.coordinates">좌표</div>
+      <div class="grid3">
+        <label><span data-i18n="label.target">대상</span><select id="coordTarget"></select></label>
+        <label><span>X</span><input id="coordX" type="number" /></label>
+        <label><span>Y</span><input id="coordY" type="number" /></label>
+      </div>
+      <div class="row wrap">
+        <button id="coordApplyButton" data-i18n="button.apply">적용</button>
+        <button id="coordDefaultButton" data-i18n="button.defaultOffsets">기본 좌표</button>
+        <button id="coordSaveButton" data-i18n="button.saveLocal">브라우저 저장</button>
+        <button id="coordExportButton" data-i18n="button.exportJson">JSON 내보내기</button>
+      </div>
+      <div id="coordStatus" class="status small"></div>
+    </section>
+  </main>
+
+  <div id="guideOverlay" class="modalOverlay" hidden>
+    <section class="guideDialog" role="dialog" aria-modal="true" aria-labelledby="guideTitle">
+      <div class="guideHeader">
+        <h2 id="guideTitle" data-i18n="guide.title">처음 사용하는 법</h2>
+        <button id="guideCloseButton" aria-label="Close" data-i18n="button.close">닫기</button>
+      </div>
+      <ol class="guideSteps">
+        <li data-i18n="guide.step1">Open Folder를 누르고 크레이지 아케이드 설치 폴더를 선택합니다.</li>
+        <li data-i18n="guide.step2">브라우저가 파일 접근 권한을 물어보면 허용합니다. 파일은 업로드되지 않고 내 PC에서만 읽습니다.</li>
+        <li data-i18n="guide.step3">왼쪽 목록에서 Avatar, CharDeco, Slot, IDDeco를 고른 뒤 Wear를 누릅니다.</li>
+        <li data-i18n="guide.step4">오른쪽에서 캐릭터, 방향, 동작, 프레임 모드, 레벨, 좌표를 조정합니다.</li>
+        <li data-i18n="guide.step5">좌표를 맞춘 뒤 Save Local을 누르면 이 브라우저에 저장됩니다. 다른 사람에게 줄 때는 Export JSON을 씁니다.</li>
+      </ol>
+      <div class="guideNote" data-i18n="guide.note">필요 파일: FxCharacter, CharTE, EmoTE, FxDesktop의 idx/idd, frame.png, csysitem.ssd.</div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

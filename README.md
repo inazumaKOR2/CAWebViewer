@@ -49,7 +49,7 @@ This is a static web viewer for previewing Crazy Arcade characters, avatars, cha
 - `CharTE.idx` / `CharTE.idd`
 - `EmoTE.idx` / `EmoTE.idd`
 - `FxDesktop.idx` / `FxDesktop.idd`
-- `frame.png`
+- `frame.png` 선택 사항. 없으면 `FxDesktop`에서 자동으로 잘라옵니다.
 - `csysitem.ssd`
 - `mypage_offsets.json` 선택 사항
 
@@ -160,7 +160,7 @@ The selected Crazy Arcade install folder should contain:
 - `CharTE.idx` / `CharTE.idd`
 - `EmoTE.idx` / `EmoTE.idd`
 - `FxDesktop.idx` / `FxDesktop.idd`
-- `frame.png`
+- `frame.png` optional. If missing, the viewer crops it from `FxDesktop`.
 - `csysitem.ssd`
 - `mypage_offsets.json` optional
 

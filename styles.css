@@ -14,8 +14,16 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   background: var(--bg);
   color: var(--text);
   font: 13px/1.35 "Segoe UI", Arial, sans-serif;
@@ -67,6 +75,7 @@ select {
 }
 
 .topbar {
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -93,8 +102,8 @@ select {
   grid-template-columns: minmax(310px, 390px) minmax(360px, 1fr) minmax(310px, 380px);
   gap: 10px;
   padding: 10px;
-  height: calc(100vh - 48px);
-  min-height: 640px;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 .panel {
@@ -103,6 +112,12 @@ select {
   border-radius: 6px;
   padding: 10px;
   min-width: 0;
+  min-height: 0;
+}
+
+.library {
+  display: flex;
+  flex-direction: column;
 }
 
 .panelTitle {
@@ -163,8 +178,8 @@ select {
 }
 
 .assetList {
-  height: calc(100vh - 245px);
-  min-height: 360px;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 .assetItem,
@@ -282,6 +297,44 @@ select {
   grid-template-columns: 1.4fr .8fr .8fr;
 }
 
+.adjustColor {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px 10px;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.rangeLabel {
+  grid-column: 1;
+}
+
+.rangeLabel > span {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.rangeLabel output {
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.rangeLabel input[type="range"] {
+  min-height: 20px;
+  padding: 0;
+}
+
+.adjustColorSwatch {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #7a8799;
+  background: #fff;
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, .2);
+}
+
 .levelSettings {
   margin-bottom: 4px;
 }
@@ -371,13 +424,41 @@ label.full {
   border-radius: 6px;
 }
 
+.siteFooter {
+  flex: 0 0 auto;
+  padding: 7px 14px;
+  color: #9da9ba;
+  border-top: 1px solid #303846;
+  background: #141820;
+  font-size: 12px;
+}
+
+.footerInner {
+  display: grid;
+  gap: 2px;
+}
+
 @media (max-width: 1100px) {
+  html,
+  body {
+    height: auto;
+    min-height: 100%;
+  }
+
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
   .shell {
     grid-template-columns: 1fr;
     height: auto;
+    min-height: 0;
   }
 
   .assetList {
+    flex: none;
     height: 360px;
+    min-height: 360px;
   }
 }

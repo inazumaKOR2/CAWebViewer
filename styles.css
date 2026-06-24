@@ -395,6 +395,27 @@ summary.panelSubTitle::after {
   grid-template-columns: 1.4fr .8fr .8fr;
 }
 
+.inGameOptions {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding: 6px;
+  border: 1px solid #3a4657;
+  border-radius: 5px;
+  background: #171c24;
+}
+
+.inGameOptions .checkLabel {
+  min-height: 28px;
+  padding: 0 6px;
+  border-radius: 4px;
+}
+
+.inGameOptions .checkLabel:hover {
+  background: #202838;
+}
+
 .adjustColor {
   display: grid;
   grid-template-columns: 1fr auto;

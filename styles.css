@@ -398,7 +398,7 @@ summary.panelSubTitle::after {
 .inGameOptions {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 6px;
   padding: 6px;
   border: 1px solid #3a4657;

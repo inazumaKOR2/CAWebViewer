@@ -99,7 +99,7 @@ select {
 
 .shell {
   display: grid;
-  grid-template-columns: minmax(310px, 390px) minmax(360px, 1fr) minmax(310px, 380px);
+  grid-template-columns: minmax(360px, 470px) minmax(360px, 1fr) minmax(310px, 380px);
   gap: 10px;
   padding: 10px;
   flex: 1 1 auto;
@@ -168,12 +168,17 @@ summary.panelSubTitle::after {
   margin-top: 8px;
 }
 
-.tabs,
 .filters,
 .row {
   display: flex;
   gap: 6px;
   align-items: center;
+}
+
+.tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
 }
 
 .wrap {
@@ -182,7 +187,20 @@ summary.panelSubTitle::after {
 
 .tab {
   height: 30px;
-  padding: 0 10px;
+  width: 100%;
+  min-width: 0;
+  padding: 0 8px;
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .tabs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .search {
@@ -227,6 +245,22 @@ summary.panelSubTitle::after {
   border-bottom: 1px solid #202631;
   cursor: pointer;
   white-space: nowrap;
+}
+
+.assetItem.hasPreview {
+  grid-template-columns: 52px minmax(0, 1fr) auto;
+  min-height: 58px;
+  padding: 5px 8px 5px 6px;
+}
+
+.assetPreview {
+  width: 48px;
+  height: 48px;
+  background: #151b24;
+  border: 1px solid #384557;
+  border-radius: 4px;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 
 .assetItem:hover,

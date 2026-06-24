@@ -22,11 +22,12 @@
     <section class="panel library">
       <div class="panelTitle" data-i18n="panel.library">목록</div>
       <div class="tabs">
-        <button class="tab active" data-tab="Avatar">Avatar</button>
-        <button class="tab" data-tab="CharDeco">CharDeco</button>
-        <button class="tab" data-tab="Slot">Slot</button>
-        <button class="tab" data-tab="Fanfare">Fanfare</button>
-        <button class="tab" data-tab="IDDeco">IDDeco</button>
+        <button class="tab active" data-tab="Avatar" data-i18n="tab.avatar">Avatar</button>
+        <button class="tab" data-tab="CharDeco" data-i18n="tab.charDeco">CharDeco</button>
+        <button class="tab" data-tab="Bomb" data-i18n="tab.bomb">Bomb</button>
+        <button class="tab" data-tab="Slot" data-i18n="tab.slot">Slot</button>
+        <button class="tab" data-tab="Fanfare" data-i18n="tab.fanfare">Fanfare</button>
+        <button class="tab" data-tab="IDDeco" data-i18n="tab.idDeco">IDDeco</button>
       </div>
       <input id="searchBox" class="search" type="search" spellcheck="false" data-i18n-placeholder="placeholder.search" />
       <div id="filterBar" class="filters"></div>
@@ -66,6 +67,7 @@
         <label><span data-i18n="label.action">동작</span><select id="actionSelect"></select></label>
         <label><span data-i18n="label.mode">모드</span><select id="modeSelect"><option value="Frame">프레임</option><option value="NoFrame">노프레임</option></select></label>
         <label><span data-i18n="label.delay">딜레이 ms</span><input id="delayInput" type="number" min="16" max="1000" value="166" /></label>
+        <label class="checkLabel"><input id="bombExplodeEnabledInput" type="checkbox" checked /><span data-i18n="label.bombExplodeEnabled">물풍선 터짐</span></label>
       </div>
       <label class="full"><span data-i18n="label.nickname">닉네임</span><input id="nicknameInput" type="text" spellcheck="false" /></label>
 
@@ -101,6 +103,7 @@
           <button id="removeButton" data-i18n="button.remove">선택 제거</button>
           <button id="clearAvatarButton" data-i18n="button.clearAvatar">아바타 비우기</button>
           <button id="clearCharButton" data-i18n="button.clearChar">캐릭데코 비우기</button>
+          <button id="clearBombButton" data-i18n="button.clearBomb">물풍선 비우기</button>
           <button id="clearSlotButton" data-i18n="button.clearSlot">슬롯 비우기</button>
           <button id="clearFanfareButton" data-i18n="button.clearFanfare">Fanfare 비우기</button>
           <button id="clearIdButton" data-i18n="button.clearId">IDDeco 비우기</button>

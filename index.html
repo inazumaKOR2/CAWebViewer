@@ -25,6 +25,7 @@
         <button class="tab active" data-tab="Avatar">Avatar</button>
         <button class="tab" data-tab="CharDeco">CharDeco</button>
         <button class="tab" data-tab="Slot">Slot</button>
+        <button class="tab" data-tab="Fanfare">Fanfare</button>
         <button class="tab" data-tab="IDDeco">IDDeco</button>
       </div>
       <input id="searchBox" class="search" type="search" spellcheck="false" data-i18n-placeholder="placeholder.search" />
@@ -45,7 +46,10 @@
         </div>
       </div>
       <div class="previewStage">
-        <canvas id="previewCanvas"></canvas>
+        <div id="previewCanvasWrap" class="previewCanvasWrap">
+          <canvas id="previewCanvas"></canvas>
+          <div id="coordOverlay" class="coordOverlay" hidden></div>
+        </div>
       </div>
       <div id="previewStatus" class="previewStatus" data-i18n="status.ready">준비됨</div>
     </section>
@@ -98,12 +102,14 @@
           <button id="clearAvatarButton" data-i18n="button.clearAvatar">아바타 비우기</button>
           <button id="clearCharButton" data-i18n="button.clearChar">캐릭데코 비우기</button>
           <button id="clearSlotButton" data-i18n="button.clearSlot">슬롯 비우기</button>
+          <button id="clearFanfareButton" data-i18n="button.clearFanfare">Fanfare 비우기</button>
           <button id="clearIdButton" data-i18n="button.clearId">IDDeco 비우기</button>
         </div>
       </details>
 
-      <details class="controlSection" open>
+      <details id="coordSection" class="controlSection" open>
         <summary class="panelSubTitle" data-i18n="panel.coordinates">좌표</summary>
+        <label class="checkLabel full"><input id="coordEditInput" type="checkbox" /><span data-i18n="label.coordEdit">좌표 드래그 수정</span></label>
         <div class="grid3">
           <label><span data-i18n="label.target">대상</span><select id="coordTarget"></select></label>
           <label><span>X</span><input id="coordX" type="number" /></label>

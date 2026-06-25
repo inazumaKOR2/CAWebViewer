@@ -76,6 +76,18 @@
       </div>
       <label class="full"><span data-i18n="label.nickname">닉네임</span><input id="nicknameInput" type="text" spellcheck="false" /></label>
 
+      <details id="motionBlurSettingsSection" class="controlSection" open>
+        <summary class="panelSubTitle" data-i18n="panel.motionBlurSettings">샤샤샥</summary>
+        <div class="grid2">
+          <label><span data-i18n="label.motionBlurStage">샤샤샥 단계</span><select id="motionBlurStageSelect"><option value="1" data-i18n="motion.stage1">1단</option><option value="2" data-i18n="motion.stage2" selected>2단</option><option value="3" data-i18n="motion.stage3">3단</option></select></label>
+          <label><span data-i18n="label.motionBlurOffset">샤샤샥 거리 px</span><input id="motionBlurOffsetInput" type="number" min="0" max="200" value="55" /></label>
+          <label><span data-i18n="label.motionBlurX">샤샤샥 X</span><input id="motionBlurXInput" type="number" min="-200" max="200" value="0" /></label>
+          <label><span data-i18n="label.motionBlurY">샤샤샥 Y</span><input id="motionBlurYInput" type="number" min="-200" max="200" value="0" /></label>
+          <label><span data-i18n="label.motionBlurDelay">샤샤샥 딜레이 ms</span><input id="motionBlurDelayInput" type="number" min="16" max="1000" value="166" /></label>
+          <label><span data-i18n="label.motionBlurFloorDelay">발자국 딜레이 ms</span><input id="motionBlurFloorDelayInput" type="number" min="50" max="2000" value="300" /></label>
+        </div>
+      </details>
+
       <details class="controlSection" open>
         <summary class="panelSubTitle" data-i18n="label.adjustColor">팀컬러</summary>
         <div class="adjustColor">

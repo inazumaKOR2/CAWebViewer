@@ -36,7 +36,7 @@ echo %SOURCE_APP%
 echo Source html:
 echo %SOURCE_INDEX%
 
-call npx.cmd --yes javascript-obfuscator@4.1.1 "%SOURCE_APP%" --output dist\app.js --compact true --rename-globals false --identifier-names-generator hexadecimal --string-array true --string-array-encoding base64 --string-array-threshold 0.55 --split-strings true --split-strings-chunk-length 8 --unicode-escape-sequence false --transform-object-keys false --control-flow-flattening false --dead-code-injection false --debug-protection false --self-defending false --source-map false
+call npx.cmd --yes javascript-obfuscator@4.1.1 "%SOURCE_APP%" --output dist\app.js --compact true --rename-globals false --identifier-names-generator hexadecimal --string-array false --split-strings false --unicode-escape-sequence false --transform-object-keys false --control-flow-flattening false --dead-code-injection false --debug-protection false --self-defending false --source-map false
 if errorlevel 1 exit /b 1
 
 node --check dist\app.js
